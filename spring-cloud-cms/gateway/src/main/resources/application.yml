@@ -1,0 +1,42 @@
+server:
+  port: 80
+spring:
+  application:
+    name: zuul-server
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka
+zuul:
+  # 网关增加匹配前缀
+#  prefix: /api
+  # 是否开启重试功能
+  retryable: true
+  # zuul已经默认为服务配置访问转发，路径为匹配服务名+接口路径
+  routes:
+#    api-server: /api-server/**
+    api-server:
+      path: /api/**
+      serviceId: api-server
+      stripPrefix: false
+  # 要忽略的默认配置的服务 '*'忽略全部默认服务路由 只能通过过滤器访问
+  ignored-services: '*'
+#    - user-server
+#    - provide-example
+# 为hystrix 设置默认相应时长
+hystrix:
+  command:
+    default:
+      execution:
+        timeout:
+          #如果enabled设置为false，则请求超时交给ribbon控制,为true,则超时作为熔断根据
+          enabled: true
+        isolation:
+          thread:
+            timeoutInMilliseconds: 3000
+ribbon:
+  OkToRetryOnAllOperations: false #对所有操作请求都进行重试,默认false
+  ReadTimeout: 500   #负载均衡超时时间，默认值5000
+  ConnectTimeout: 1000 #ribbon请求连接的超时时间，默认值2000
+  MaxAutoRetries: 0     #对当前实例的重试次数，默认0
+  MaxAutoRetriesNextServer: 1 #对切换实例的重试次数，默认1

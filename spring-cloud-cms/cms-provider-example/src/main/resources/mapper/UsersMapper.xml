@@ -1,0 +1,274 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.hist.js.dao.UserMapper" >
+  <resultMap id="BaseResultMap" type="com.hist.js.pojo.example.Users" >
+    <id column="user_id" property="userId" jdbcType="INTEGER" />
+    <result column="user_name" property="userName" jdbcType="VARCHAR" />
+    <result column="user_pwd" property="userPwd" jdbcType="VARCHAR" />
+    <result column="user_email" property="userEmail" jdbcType="VARCHAR" />
+    <result column="user_image_url" property="userImageUrl" jdbcType="VARCHAR" />
+    <result column="user_nick_name" property="userNickName" jdbcType="VARCHAR" />
+    <result column="user_says" property="userSays" jdbcType="VARCHAR" />
+    <result column="user_phone" property="userPhone" jdbcType="VARCHAR" />
+    <result column="user_sex" property="userSex" jdbcType="TINYINT" />
+    <result column="user_qq" property="userQq" jdbcType="VARCHAR" />
+    <result column="user_address" property="userAddress" jdbcType="VARCHAR" />
+    <result column="user_last_login_ip" property="userLastLoginIp" jdbcType="VARCHAR" />
+    <result column="user_birthday" property="userBirthday" jdbcType="DATE" />
+    <result column="user_description" property="userDescription" jdbcType="VARCHAR" />
+    <result column="user_school" property="userSchool" jdbcType="VARCHAR" />
+    <result column="user_register_time" property="userRegisterTime" jdbcType="TIMESTAMP" />
+    <result column="user_register_ip" property="userRegisterIp" jdbcType="VARCHAR" />
+    <result column="user_lock" property="userLock" jdbcType="TINYINT" />
+    <result column="user_freeze" property="userFreeze" jdbcType="TINYINT" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    user_id, user_name, user_pwd, user_email, user_image_url, user_nick_name, user_says,
+    user_phone, user_sex, user_qq, user_address, user_last_login_ip, user_birthday, user_description,
+    user_school, user_register_time, user_register_ip, user_lock, user_freeze
+  </sql>
+
+  <!-- 手动添加mapper start -->
+  <select id="select" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from quaint_user
+  </select>
+  <select id="selectByName" parameterType="String" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from quaint_user
+    where user_name = #{userName}
+  </select>
+  <!-- 手动添加mapper end -->
+
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select
+    <include refid="Base_Column_List" />
+    from quaint_user
+    where user_id = #{userId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from quaint_user
+    where user_id = #{userId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.hist.js.pojo.example.Users" >
+    insert into quaint_user (user_id, user_name, user_pwd,
+      user_email, user_image_url, user_nick_name,
+      user_says, user_phone, user_sex,
+      user_qq, user_address, user_last_login_ip,
+      user_birthday, user_description, user_school,
+      user_register_time, user_register_ip, user_lock,
+      user_freeze)
+    values (#{userId,jdbcType=INTEGER}, #{userName,jdbcType=VARCHAR}, #{userPwd,jdbcType=VARCHAR},
+      #{userEmail,jdbcType=VARCHAR}, #{userImageUrl,jdbcType=VARCHAR}, #{userNickName,jdbcType=VARCHAR},
+      #{userSays,jdbcType=VARCHAR}, #{userPhone,jdbcType=VARCHAR}, #{userSex,jdbcType=TINYINT},
+      #{userQq,jdbcType=VARCHAR}, #{userAddress,jdbcType=VARCHAR}, #{userLastLoginIp,jdbcType=VARCHAR},
+      #{userBirthday,jdbcType=DATE}, #{userDescription,jdbcType=VARCHAR}, #{userSchool,jdbcType=VARCHAR},
+      #{userRegisterTime,jdbcType=TIMESTAMP}, #{userRegisterIp,jdbcType=VARCHAR}, #{userLock,jdbcType=TINYINT},
+      #{userFreeze,jdbcType=TINYINT})
+  </insert>
+  <insert id="insertSelective" parameterType="com.hist.js.pojo.example.Users" >
+    insert into quaint_user
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="userId != null" >
+        user_id,
+      </if>
+      <if test="userName != null" >
+        user_name,
+      </if>
+      <if test="userPwd != null" >
+        user_pwd,
+      </if>
+      <if test="userEmail != null" >
+        user_email,
+      </if>
+      <if test="userImageUrl != null" >
+        user_image_url,
+      </if>
+      <if test="userNickName != null" >
+        user_nick_name,
+      </if>
+      <if test="userSays != null" >
+        user_says,
+      </if>
+      <if test="userPhone != null" >
+        user_phone,
+      </if>
+      <if test="userSex != null" >
+        user_sex,
+      </if>
+      <if test="userQq != null" >
+        user_qq,
+      </if>
+      <if test="userAddress != null" >
+        user_address,
+      </if>
+      <if test="userLastLoginIp != null" >
+        user_last_login_ip,
+      </if>
+      <if test="userBirthday != null" >
+        user_birthday,
+      </if>
+      <if test="userDescription != null" >
+        user_description,
+      </if>
+      <if test="userSchool != null" >
+        user_school,
+      </if>
+      <if test="userRegisterTime != null" >
+        user_register_time,
+      </if>
+      <if test="userRegisterIp != null" >
+        user_register_ip,
+      </if>
+      <if test="userLock != null" >
+        user_lock,
+      </if>
+      <if test="userFreeze != null" >
+        user_freeze,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="userId != null" >
+        #{userId,jdbcType=INTEGER},
+      </if>
+      <if test="userName != null" >
+        #{userName,jdbcType=VARCHAR},
+      </if>
+      <if test="userPwd != null" >
+        #{userPwd,jdbcType=VARCHAR},
+      </if>
+      <if test="userEmail != null" >
+        #{userEmail,jdbcType=VARCHAR},
+      </if>
+      <if test="userImageUrl != null" >
+        #{userImageUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="userNickName != null" >
+        #{userNickName,jdbcType=VARCHAR},
+      </if>
+      <if test="userSays != null" >
+        #{userSays,jdbcType=VARCHAR},
+      </if>
+      <if test="userPhone != null" >
+        #{userPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="userSex != null" >
+        #{userSex,jdbcType=TINYINT},
+      </if>
+      <if test="userQq != null" >
+        #{userQq,jdbcType=VARCHAR},
+      </if>
+      <if test="userAddress != null" >
+        #{userAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="userLastLoginIp != null" >
+        #{userLastLoginIp,jdbcType=VARCHAR},
+      </if>
+      <if test="userBirthday != null" >
+        #{userBirthday,jdbcType=DATE},
+      </if>
+      <if test="userDescription != null" >
+        #{userDescription,jdbcType=VARCHAR},
+      </if>
+      <if test="userSchool != null" >
+        #{userSchool,jdbcType=VARCHAR},
+      </if>
+      <if test="userRegisterTime != null" >
+        #{userRegisterTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="userRegisterIp != null" >
+        #{userRegisterIp,jdbcType=VARCHAR},
+      </if>
+      <if test="userLock != null" >
+        #{userLock,jdbcType=TINYINT},
+      </if>
+      <if test="userFreeze != null" >
+        #{userFreeze,jdbcType=TINYINT},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.hist.js.pojo.example.Users" >
+    update quaint_user
+    <set >
+      <if test="userName != null" >
+        user_name = #{userName,jdbcType=VARCHAR},
+      </if>
+      <if test="userPwd != null" >
+        user_pwd = #{userPwd,jdbcType=VARCHAR},
+      </if>
+      <if test="userEmail != null" >
+        user_email = #{userEmail,jdbcType=VARCHAR},
+      </if>
+      <if test="userImageUrl != null" >
+        user_image_url = #{userImageUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="userNickName != null" >
+        user_nick_name = #{userNickName,jdbcType=VARCHAR},
+      </if>
+      <if test="userSays != null" >
+        user_says = #{userSays,jdbcType=VARCHAR},
+      </if>
+      <if test="userPhone != null" >
+        user_phone = #{userPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="userSex != null" >
+        user_sex = #{userSex,jdbcType=TINYINT},
+      </if>
+      <if test="userQq != null" >
+        user_qq = #{userQq,jdbcType=VARCHAR},
+      </if>
+      <if test="userAddress != null" >
+        user_address = #{userAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="userLastLoginIp != null" >
+        user_last_login_ip = #{userLastLoginIp,jdbcType=VARCHAR},
+      </if>
+      <if test="userBirthday != null" >
+        user_birthday = #{userBirthday,jdbcType=DATE},
+      </if>
+      <if test="userDescription != null" >
+        user_description = #{userDescription,jdbcType=VARCHAR},
+      </if>
+      <if test="userSchool != null" >
+        user_school = #{userSchool,jdbcType=VARCHAR},
+      </if>
+      <if test="userRegisterTime != null" >
+        user_register_time = #{userRegisterTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="userRegisterIp != null" >
+        user_register_ip = #{userRegisterIp,jdbcType=VARCHAR},
+      </if>
+      <if test="userLock != null" >
+        user_lock = #{userLock,jdbcType=TINYINT},
+      </if>
+      <if test="userFreeze != null" >
+        user_freeze = #{userFreeze,jdbcType=TINYINT},
+      </if>
+    </set>
+    where user_id = #{userId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.hist.js.pojo.example.Users" >
+    update quaint_user
+    set user_name = #{userName,jdbcType=VARCHAR},
+      user_pwd = #{userPwd,jdbcType=VARCHAR},
+      user_email = #{userEmail,jdbcType=VARCHAR},
+      user_image_url = #{userImageUrl,jdbcType=VARCHAR},
+      user_nick_name = #{userNickName,jdbcType=VARCHAR},
+      user_says = #{userSays,jdbcType=VARCHAR},
+      user_phone = #{userPhone,jdbcType=VARCHAR},
+      user_sex = #{userSex,jdbcType=TINYINT},
+      user_qq = #{userQq,jdbcType=VARCHAR},
+      user_address = #{userAddress,jdbcType=VARCHAR},
+      user_last_login_ip = #{userLastLoginIp,jdbcType=VARCHAR},
+      user_birthday = #{userBirthday,jdbcType=DATE},
+      user_description = #{userDescription,jdbcType=VARCHAR},
+      user_school = #{userSchool,jdbcType=VARCHAR},
+      user_register_time = #{userRegisterTime,jdbcType=TIMESTAMP},
+      user_register_ip = #{userRegisterIp,jdbcType=VARCHAR},
+      user_lock = #{userLock,jdbcType=TINYINT},
+      user_freeze = #{userFreeze,jdbcType=TINYINT}
+    where user_id = #{userId,jdbcType=INTEGER}
+  </update>
+</mapper>

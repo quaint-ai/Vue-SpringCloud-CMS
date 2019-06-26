@@ -1,0 +1,30 @@
+server:
+  port: 15100
+spring:
+  application:
+    name: api-server
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka
+feign:
+  hystrix:
+    enabled: true
+# 为hystrix 设置默认相应时长
+hystrix:
+  command:
+    default:
+      execution:
+        timeout:
+          #如果enabled设置为false，则请求超时交给ribbon控制,为true,则超时作为熔断根据
+          enabled: true
+        isolation:
+          thread:
+            timeoutInMilliseconds: 3000
+# ribbon 改变默认负载均衡算法
+ribbon:
+  OkToRetryOnAllOperations: false #对所有操作请求都进行重试,默认false
+  ReadTimeout: 500   #负载均衡超时时间，默认值5000
+  ConnectTimeout: 1000 #ribbon请求连接的超时时间，默认值2000
+  MaxAutoRetries: 0     #对当前实例的重试次数，默认0
+  MaxAutoRetriesNextServer: 1 #对切换实例的重试次数，默认1
