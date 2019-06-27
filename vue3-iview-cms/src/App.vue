@@ -1,16 +1,24 @@
 <template>
   <div id="app">
-    <index-layout></index-layout>
+    <div class="layout">
+      <Layout>
+        <c-head></c-head>
+        <router-view></router-view>
+        <c-foot></c-foot>
+      </Layout>
+    </div>
   </div>
 </template>
 
 <script>
-import Index from "./views/v-index.vue";
+import Head from "./components/admin/c-head";
+import Foot from "./components/admin/c-foot";
 
 export default {
   name: "app",
   components: {
-    "index-layout": Index
+    "c-head": Head,
+    "c-foot": Foot
   }
 };
 </script>

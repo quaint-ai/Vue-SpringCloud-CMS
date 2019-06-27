@@ -1,6 +1,8 @@
 import Vue from "vue";
 import Router from "vue-router";
-import Index from "./views/v-index.vue";
+import AdminHome from "./views/admin/content/v-home.vue";
+import AdminContent from "./views/admin/content/v-content.vue";
+import AdminTable from "./views/admin/content/v-table.vue";
 
 Vue.use(Router);
 
@@ -10,17 +12,28 @@ export default new Router({
   routes: [
     {
       path: "/",
-      name: "v-index",
-      component: Index
+      name: "v-a-home",
+      component: AdminHome
     },
     {
-      path: "/index",
-      name: "v-index",
+      path: "/admin/home",
+      name: "v-a-home",
+      component: AdminHome
+    },
+    {
+      path: "/admin/table",
+      name: "v-a-table",
+      component: AdminTable
+    },
+    {
+      path: "/admin/content",
+      name: "v-a-content",
+      component: AdminContent
       // route level code-splitting
       // this generates a separate chunk (about.[hash].js) for this route
       // which is lazy-loaded when the route is visited.
-      component: () =>
-        import(/* webpackChunkName: "about" */ "./views/v-index.vue")
+      // component: () =>
+      //   import(/* webpackChunkName: "about" */ "./views/admin/login/v-login.vue")
     }
   ]
 });
