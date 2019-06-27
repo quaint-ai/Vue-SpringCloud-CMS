@@ -31,13 +31,9 @@
         <Menu mode="horizontal" theme="dark" active-name="1">
             <div class="layout-logo"><Avatar src="https://i.loli.net/2017/08/21/599a521472424.jpg" /></div>
             <div class="layout-nav">
-                <MenuItem name="2">
-                    <Icon type="ios-keypad"></Icon>
-                    <router-link to="/">GoCMS</router-link>
-                </MenuItem>
-                <MenuItem name="3">
+                <MenuItem name="1">
                     <Icon type="ios-analytics"></Icon>
-                    <router-link to="/admin-login">Logout</router-link>
+                    <router-link to="/admin-login">登录后台</router-link>
                 </MenuItem>
             </div>
         </Menu>

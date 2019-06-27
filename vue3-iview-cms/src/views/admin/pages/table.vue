@@ -1,8 +1,8 @@
 <template>
-    <Content :style="{margin: '88px 20px 0', background: '#fff', minHeight: '500px'}">
+    <div>
        <Table stripe :columns="columns1" :data="data1"></Table>
         <router-link to="/admin/home">Look Home</router-link>
-    </Content>
+    </div>
 </template>
 <script>
     export default {
