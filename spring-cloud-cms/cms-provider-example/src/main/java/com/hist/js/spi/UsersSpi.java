@@ -25,7 +25,6 @@ public class UsersSpi implements ExampleRemote {
     body-->请求参数的获取：@RequestBody(代码中接收注解)
     form（不常用）
     */
-
     @ApiOperation(value="获取用户详细信息", notes="根据url的id来获取用户详细信息")
     @ApiImplicitParam(name = "id", value = "用户ID", required = true, dataType = "int", paramType = "query")
     @GetMapping(ExampleApiConstant.EXAMPLE_USER)

@@ -6,9 +6,9 @@ import cmsIndex from "@/views/cms/cms-index.vue"
 import AdminLogin from "@/views/admin/login.vue";
 import AdminIndex from "@/views/admin/index.vue";
 // 下面为index下的子页面
-import AdminHome from "./views/admin/pages/home.vue";
-import AdminContent from "./views/admin/pages/content.vue";
-import AdminTable from "./views/admin/pages/table.vue";
+import AdminHome from "@/views/admin/pages/home.vue";
+import AdminContent from "@/views/admin/pages/content.vue";
+import AdminTable from "@/views/admin/pages/table.vue";
 
 Vue.use(Router);
 
